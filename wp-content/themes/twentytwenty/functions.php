@@ -758,3 +758,23 @@ function twentytwenty_get_elements_array() {
 	*/
 	return apply_filters( 'twentytwenty_get_elements_array', $elements );
 }
+
+function dcms_last_updated_entry( $content ) {
+
+	//if ( ! is_single() ) return $content;
+
+	$custom_content = '';
+	$u_time = get_the_time('U');
+	$u_modified_time = get_the_modified_time('U');
+
+	if (true) {
+		$updated_date = get_the_modified_time('F jS, Y');
+		$updated_time = get_the_modified_time('h:i a');
+		$custom_content .= '<p class="last-updated">Última actualización: '. $updated_date . ' - '. $updated_time .'</p>';
+	}
+
+	$custom_content .= $content;
+	return $custom_content;
+}
+
+add_filter( 'the_content', 'dcms_last_updated_entry' );

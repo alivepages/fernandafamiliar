@@ -63,7 +63,7 @@
 							 */
 							$show_categories = apply_filters( 'twentytwenty_show_categories_in_entry_header', true );
 
-							if ( true === $show_categories && has_category() ) {
+							if ( false && true === $show_categories && has_category() ) {
 								?>
 
 								<div class="entry-categories">
@@ -111,6 +111,7 @@
 									<?php
 								}
 
+								
 								twentytwenty_the_post_meta( get_the_ID(), 'single-top' );
 
 							}

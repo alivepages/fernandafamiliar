@@ -29,7 +29,7 @@ if ( is_singular() ) {
 			 */
 		$show_categories = apply_filters( 'twentytwenty_show_categories_in_entry_header', true );
 
-		if ( true === $show_categories && has_category() ) {
+		if ( false && true === $show_categories && has_category() ) {
 			?>
 
 			<div class="entry-categories">
@@ -67,7 +67,14 @@ if ( is_singular() ) {
 		}
 
 		// Default to displaying the post meta.
-		twentytwenty_the_post_meta( get_the_ID(), 'single-top' );
+		//twentytwenty_the_post_meta( get_the_ID(), 'single-top' );
+		$updated_date = get_the_modified_time('j F, Y');
+		$created_date = get_the_time('j F, Y');
+		$updated_time = get_the_modified_time();
+		$created_time = get_the_time();
+$custom_content = '<p class="ultima-actualizacion">Creado: '. $created_date . ' ' .
+$created_time . '<br>Actualizado: ' . $updated_date . ' ' . $updated_time.'</p>';
+		echo $custom_content;
 		?>
 
 	</div><!-- .entry-header-inner -->
